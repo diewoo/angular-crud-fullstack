@@ -1,0 +1,47 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+        <a mat-flat-button color="primary" [routerLink]="['/producto-agregar']">
+            <mat-icon>
+                add
+            </mat-icon>
+        </a>
+
+    </div>
+
+    <br>
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th scope="col">Porducto</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Detalle</th>
+
+
+                </tr>
+            </thead>
+            <tr *ngFor="let item of data">
+                <td>{{item.prod_name}}</td>
+                <td>{{item.prod_desc}}</td>
+                <td>{{item.prod_price}}</td>
+                <td>
+                    <div class="button-row">
+                        <a mat-flat-button color="primary" [routerLink]="['/producto-detalle',item._id]">
+                            <mat-icon>
+                                information-circle-outline
+                            </mat-icon>
+                        </a>
+
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

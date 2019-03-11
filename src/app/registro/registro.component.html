@@ -1,0 +1,42 @@
+<div class="example-container mat-elevation-z8">
+        <div class="example-loading-shade" *ngIf="isLoadingResults">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        </div>
+
+        <mat-card class="example-card">
+            <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm.value)">
+                Registrarse
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nombre" formControlName="nombre" [errorStateMatcher]="matcher">
+                    <mat-error>
+                        <span *ngIf="!registerForm.get('nombre').valid && registerForm.get('nombre').touched">Por favor ingresa el nombre </span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Apellido" formControlName="apellido" [errorStateMatcher]="matcher">
+                    <mat-error>
+                        <span *ngIf="!registerForm.get('apellido').valid && registerForm.get('apellido').touched">Por favor ingresa el apellido </span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Correo" formControlName="correo" [errorStateMatcher]="matcher">
+                    <mat-error>
+                        <span *ngIf="!registerForm.get('correo').valid && registerForm.get('correo').touched">Por favor ingresa el correo</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                        <input type="password" matInput placeholder="Contraseña" formControlName="contrasena" [errorStateMatcher]="matcher">
+                        <mat-error>
+                            <span *ngIf="!registerForm.get('contrasena').valid && registerForm.get('contrasena').touched">Por favor la contraseña</span>
+                        </mat-error>
+                    </mat-form-field>
+                <div class="button-row">
+                    <button type="submit" [disabled]="!registerForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+                    <a mat-flat-button color="primary" [routerLink]="['/login']">
+                        <mat-icon>keyboard_backspace</mat-icon>
+                    </a>
+                </div>
+
+            </form>
+        </mat-card>
+    </div>

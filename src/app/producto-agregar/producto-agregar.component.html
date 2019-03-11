@@ -1,0 +1,36 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+        <a mat-flat-button color="primary" [routerLink]="['/productos']">
+            <mat-icon>list</mat-icon>
+        </a>
+    </div>
+    <mat-card class="example-card">
+        <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
+            Agregar producto
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nombre Producto" formControlName="prod_name" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!productForm.get('prod_name').valid && productForm.get('prod_name').touched">Por favor ingresa el nombre del Producto</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Descripcion producto" formControlName="prod_desc" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!productForm.get('prod_desc').valid && productForm.get('prod_desc').touched">Por favor ingresa la descripción del Producto</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Precio del Producto" formControlName="prod_price" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!productForm.get('prod_price').valid && productForm.get('prod_price').touched">Por favor ingresa el precio del Producto</span>
+                </mat-error>
+            </mat-form-field>
+            <div class="button-row">
+                <button type="submit" [disabled]="!productForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+            </div>
+        </form>
+    </mat-card>
+</div>
